@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {{>head}}
+        {{! custom checkbox start}}
+        <style>
+            .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #bebebe;
+            }
+
+            /* On mouse-over, add a grey background color */
+            .container:hover input ~ .checkmark {
+            background-color: #ccc;
+            }
+
+            /* When the checkbox is checked, add a blue background */
+            .container input:checked ~ .checkmark {
+            background-color: #14274e;
+            }
+
+            /* Create the checkmark/indicator (hidden when not checked) */
+            .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            }
+
+            /* Show the checkmark when checked */
+            .container input:checked ~ .checkmark:after {
+            display: block;
+            }
+
+            /* Style the checkmark/indicator */
+            .container .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            }
+        </style>
+        {{! custom checkbox End}}
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        {{>navbar}}
+        <!-- Masthead-->
+        <header class="clienthead">
+            <div class="container">
+                <div class="masthead-heading text-uppercase"></div>
+            </div>
+        </header>
+
+        <!-- Portfolio Grid-->
+        <section class="page-section bg-light" id="portfolio">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Your Event</h2>
+                    <h3 class="section-subheading text-muted">Choose an Event to add to your profile</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#weddingModal">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/01-thumbnail.jpg" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Wedding</div>
+                                <div class="portfolio-caption-subheading text-muted">An Unforgettable Day</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#birthdayModal">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/02-thumbnail.jpg" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Birthday Party</div>
+                                <div class="portfolio-caption-subheading text-muted">Best Birthday Party of the year</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/03-thumbnail.jpg" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Finish</div>
+                                <div class="portfolio-caption-subheading text-muted">Identity</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <!-- Portfolio Modals-->
+        <!-- Wedding Modal -->
+        <div class="portfolio-modal modal fade" id="weddingModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                            <form id="weddingTaskForm" name="weddingTask">
+                                <div class="modal-body">
+                                    <!-- Project Details Go Here-->
+                                    <h2 class="text-uppercase">Wedding</h2>
+                                    <p class="item-intro text-muted">Add Your Wedding Events</p>
+                                    {{! <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/01-full.jpg" alt="" />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    
+                                    }}
+                                    <br/><br/><br/>
+                                    <div class="row">
+                                        <div class="col-8">Set a Wedding Budget</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <div class = "row">
+                                                    <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="setWeddingBudget">
+                                                    </div>
+                                                    <div class="col-md-6" >
+                                                        <input class="datepicker" type="text" name="setWeddingBudgetDate" >
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-8">Finalize the guest list</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <div class = "row">
+                                                    <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="finalizeGuestList">
+                                                    </div>
+                                                    <div class="col-md-6" >
+                                                        <input class="datepicker" type="text" name="finalizeGuestListDate" >
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Select Bridesmaid, Groomsman, Groomsladies or bridesman</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <div class = "row">
+                                                    <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="selectBridesmaid">
+                                                    </div>
+                                                    <div class="col-md-6" >
+                                                        <input class="datepicker" type="text" name="selectBridesmaidDate" >
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Choose & book the venue</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <div class = "row">
+                                                    <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="chooseVenue">
+                                                    </div>
+                                                    <div class="col-md-6" >
+                                                        <input class="datepicker" type="text" name="chooseVenueDate" >
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Wedding registry</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <div class = "row">
+                                                    <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="weddingRegistry">
+                                                    </div>
+                                                    <div class="col-md-6" >
+                                                        <input class="datepicker" type="text" name="weddingRegistryDate" >
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Purchase wedding dress & other attire (both bride & groom)</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <div class = "row">
+                                                    <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="weddingDress">
+                                                    </div>
+                                                    <div class="col-md-6" >
+                                                        <input class="datepicker" type="text" name="weddingDressDate" >
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Organize pre-wedding events(Bridal Shower/ Bachelor & Bachelorette party )</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <div class = "row">
+                                                    <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="preweddingEvents">
+                                                    </div>
+                                                    <div class="col-md-6" >
+                                                        <input class="datepicker" type="text" name="preweddingEventsDate" >
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Send wedding invitations</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <div class = "row">
+                                                    <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="sendWeddingInvitations">
+                                                    </div>
+                                                    <div class="col-md-6" >
+                                                        <input class="datepicker" type="text" name="sendWeddingInvitationsDate" >
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Booking salons</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <div class = "row">
+                                                    <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="bookingSalons">
+                                                    </div>
+                                                    <div class="col-md-6" >
+                                                        <input class="datepicker" type="text" name="bookingSalonsDate" >
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Buy Jewelerries</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <div class = "row">
+                                                    <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="buyJewelerries">
+                                                    </div>
+                                                    <div class="col-md-6" >
+                                                        <input class="datepicker" type="text" name="buyJewelerriesDate" >
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Make orders for Wedding cakes, boxes and Cards </div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <div class = "row">
+                                                    <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="makeOrdersForWeddingCakes">
+                                                    </div>
+                                                    <div class="col-md-6" >
+                                                        <input class="datepicker" type="text" name="makeOrdersForWeddingCakesDate" >
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Honeymoon</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <div class = "row">
+                                                    <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="honeyMoon">
+                                                    </div>
+                                                    <div class="col-md-6" >
+                                                        <input class="datepicker" type="text" name="honeyMoonDate" >
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Finalize the food menu</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <div class = "row">
+                                                    <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="finalizeFoodMenu">
+                                                    </div>
+                                                    <div class="col-md-6" >
+                                                        <input class="datepicker" type="text" name="finalizeFoodMenuDate" >
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <br/><br/>
+                                    <button class="btn btn-primary"  type="submit" id="weddingdetailssubmitbtn" data-dismiss="modal">
+                                        Let's see Wedding Timeline !!
+                                    </button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Birthday Modal -->
+        <div class="portfolio-modal modal fade" id="birthdayModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project Details Go Here-->
+                                    <h2 class="text-uppercase">Birthday Party</h2>
+                                    <p class="item-intro text-muted">Add Your Birthday Party Events</p>
+                                    {{! <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/01-full.jpg" alt="" />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    
+                                    }}
+                                    <br/><br/><br/>
+                                    <div class="row">
+                                        <div class="col-8">Set a Party Budget</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-8">Finalize the guest list</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Make orders for Birthday cake & invitations</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">send party invitations</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Choose & Book the venue</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Fonalize the food menu</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Buy a birthday gifts</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <br/><br/>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                        Let's set Dates to My Birthday Party !!
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 1-->
+        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project Details Go Here-->
+                                    <h2 class="text-uppercase">Wedding</h2>
+                                    <p class="item-intro text-muted">Add Your Wedding Events</p>
+                                    {{! <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/01-full.jpg" alt="" />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    
+                                    }}
+                                    <br/><br/><br/>
+                                    <div class="row">
+                                        <div class="col-8">Set a Wedding Budget</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-8">Finalize the guest list</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Select Bridesmaid, Groomsman, Groomsladies or bridesman</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Choose & book the venue</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Wedding registry</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Purchase wedding dress & other attire (both bride & groom)</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Organize pre-wedding events(Bridal Shower/ Bachelor & Bachelorette party )</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Send wedding invitations</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Booking salons</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Buy Jewelerries</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Make orders for Wedding cakes & cake boxes</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Make orders for wedding cards</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Honeymoon</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-8">Finalize the food menu</div>
+                                        <div class="col-4">
+                                            <label class="container">
+                                                <input type="checkbox" class="checkmark">
+                                            </label>
+                                        </div>
+                                    </div><br/>
+                                    <br/><br/>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                        Let's set Dates to My Wedding !!
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Timeline-->
+        <section class="page-section" id="timeline">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Event Plan</h2>
+                    <h3 class="section-subheading text-muted">Your Event Plan Timeline.</h3>
+                </div>
+                <ul class="timeline">
+                    <li>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>2009-2011</h4>
+                                <h4 class="subheading">Our Humble Beginnings</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2.jpg" alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>March 2011</h4>
+                                <h4 class="subheading">An Agency is Born</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.jpg" alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>December 2012</h4>
+                                <h4 class="subheading">Transition to Full Service</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>July 2014</h4>
+                                <h4 class="subheading">Phase Two Expansion</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image">
+                            <h3><br/>
+                                Final
+                                <br />
+                                Event!
+                            </h3>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Footer-->
+        {{>footer}}
+        {{>imports}}
+    </body>
+</html>

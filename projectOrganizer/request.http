@@ -1,0 +1,12 @@
+
+//GET    http://localhost:3000/clientApi/
+
+
+
+
+POST  http://localhost:3000/clientApi HTTP/1.1
+content-type: application/json
+
+{
+    "name": "jghhhhhhhhh"
+}
