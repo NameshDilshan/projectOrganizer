@@ -6,9 +6,9 @@ router.get('/', clientController.findAll);
 // Create a new client
 router.post('/', clientController.create);
 // Retrieve a single client with id
-router.get('/:id', clientController.findById);
+router.get('/:googleId', clientController.findById);
 // Update a client with id
-router.put('/:id', clientController.update);
+router.put('/:googleId', clientController.update);
 // Delete a client with id
-router.delete('/:id', clientController.delete);
+router.delete('/:googleId', clientController.delete);
 module.exports = router

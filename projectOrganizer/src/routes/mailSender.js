@@ -17,9 +17,7 @@ router.post('/adminContactSendMail', (req, res) => {
     var phone = req.body.phone;
     var email = req.body.email;
     var message = req.body.message;
-    console.log();
 
-    
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -52,5 +50,35 @@ transporter.sendMail(mailOptions, function(error, info){
 });
 
 
+var sendTaskEmailToClient = function(task, name, email){
 
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: websiteEmailAddress,
+    pass: websitePassword
+  }
+});
+
+var mailOptions = {
+  from: websiteEmailAddress,
+  to: email,
+  subject: 'Event Organizer App Task Reminder Task : '+ task +'',
+  /* text: mustache.render("<html><body><div> <h3> Name : <h3>" + name + 
+    " <br/> <h3> Phone : <h3>" + phone + 
+    " <br/> <h3> Email : <h3>" + email + 
+    " <br/> <h3> Message : <h3>" + message + " <br/> </div></body></html>"), */
+   html: "<html><body> <p style='font-size: 20px;'>Dear "+ name + " You have a Task Today :  " + task +  
+    " <br/> Thank You !! </p></body></html>" 
+  };
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
+}
 module.exports = router;
+module.exports.sendTaskEmailToClient = sendTaskEmailToClient;

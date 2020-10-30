@@ -55,54 +55,18 @@
     $(window).scroll(navbarCollapse);
 })(jQuery); // End of use strict
 
+$(document).ready(function (){
+    $('#adminLoginNavbar').show();
+    var usernameval = $('#usernamevalue').val().length;
+    var adminval = $('#adminTrueFalse').val();
+    $('#usernamevalue').val() == "false" ? usernameval = 0 : 0 ;
+    if(adminval == "true" || usernameval > 0){
+        $('#adminLoginNavbar').hide();
+    }
 
-// Data Picker Initialization
-$('.datepicker').datepicker({
-    dateFormat: "dd-mm-yy" 
+
+
 });
-
-    $('#weddingdetailssubmitbtn').click(function (event) {
-            alert("Sdfasdfasdf");
-            event.preventDefault(); // prevent default submit behaviour
-            var formdata = $("#weddingTaskForm").serializeArray(); 
-            formdata = $.parseJSON(formdata);
-            var data = {}; $(formdata ).each(function(index, obj){ data[obj.name] = obj.value; });
-            /* var myform = document.getElementById("weddingTaskForm"); */
-            $this = $("#weddingdetailssubmitbtn");
-            $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
-            $.ajax({
-                url: "clientApi",
-                data: data,
-                dataType: 'application/json',
-                type: 'POST',
-                success: function () {
-                    // Success message
-                    Swal.fire(
-                        'Your Tasks Saved !',
-                        '',
-                        'success'
-                      );
-                    //clear all fields
-                    $("#weddingTaskForm").trigger("reset");
-                },
-                error: function () {
-                    // Fail message
-                    Swal.fire(
-                        ' Sorry ',
-                        'It seems that my server is not responding. Please try again later!!',
-                        'error'
-                      );
-                    //clear all fields
-                    $("#weddingTaskForm").trigger("reset");
-                },
-                complete: function () {
-                    setTimeout(function () {
-                        $this.prop("disabled", false); // Re-enable submit button when AJAX call is complete
-                    }, 1000);
-                },
-            });
-        });
-
 
  /* $('#contactForm').submit(function(e){
     e.preventDefault();

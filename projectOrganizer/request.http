@@ -1,12 +1,56 @@
 
-//GET    http://localhost:3000/clientApi/
+GET  http://localhost:3000/test
 
+//GET    http://localhost:3000/serviceProviderApi
 
-
-
-POST  http://localhost:3000/clientApi HTTP/1.1
+POST    http://localhost:3000/serviceProviderApi
 content-type: application/json
 
 {
-    "name": "jghhhhhhhhh"
+    "companyName": "asd",
+    "tel": "asd",
+    "email": "afghjsd",
+    "address": "asd",
+    "ownerName": "asd",
+    "ownerIdNo": "asd",
+    "websiteLink": "asd",
+    "description": "asd",
+    "isWedding": 1,
+    "isBirthdayParty": 1,
+    "isOfficeParty": 1
+}
+
+
+PUT        http://localhost:3000/clientApi HTTP/1.1
+content-type: application/json
+
+{
+    "email" : "asdfasd",
+   "name":"on",
+   "setWeddingBudget":"true",
+   "setWeddingBudgetDate":"20-10-2020",
+   "finalizeGuestList":"true",
+   "finalizeGuestListDate":"",
+   "selectBridesmaid":"true",
+   "selectBridesmaidDate":"22-10-2020",
+   "chooseVenue":"true",
+   "chooseVenueDate":"",
+   "weddingRegistry":"true",
+   "weddingRegistryDate":"",
+   "weddingDress":"true",
+   "weddingDressDate":"",
+   "preweddingEvents":"true",
+   "preweddingEventsDate":"",
+   "sendWeddingInvitations":"true",
+   "sendWeddingInvitationsDate":"",
+   "bookingSalons":"true",
+   "bookingSalonsDate":"",
+   "buyJewelerries":"true",
+   "buyJewelerriesDate":"",
+   "makeOrdersForWeddingCakes":"true",
+   "makeOrdersForWeddingCakesDate":"",
+   "honeyMoon":"true",
+   "honeyMoonDate":"",
+   "finalizeFoodMenu":"true",
+   "finalizeFoodMenuDate":""
 }

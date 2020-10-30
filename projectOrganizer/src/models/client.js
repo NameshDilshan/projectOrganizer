@@ -4,20 +4,29 @@ var dbConn = require('./../../config/dbConfig');
 var Client = function (client) {
   this.name = client.name;
   this.email = client.email;
-  this.setWeddingBudget = client.setWeddingBudget;
-  this.finalizeGuestList = client.finalizeGuestList;
-  this.selectBridesmaid = client.selectBridesmaid;
-  this.chooseVenue = client.chooseVenue;
-  this.weddingRegistry = client.weddingRegistry;
-  this.weddingDress = client.weddingDress;
-  this.preweddingEvents = client.preweddingEvents;
-  this.sendWeddingInvitations = client.sendWeddingInvitations;
-  this.bookingSalons = client.bookingSalons;
-  this.buyJewelerries = client.buyJewelerries;
-  this.makeOrdersForWeddingCakes = client.makeOrdersForWeddingCakes;
-  this.honeyMoon = client.honeyMoon;
-  this.finalizeFoodMenu = client.finalizeFoodMenu;
+  this.googleId = client.googleId;
 
+  this.setWeddingBudgetDate = client.setWeddingBudgetDate;
+  this.finalizeGuestListDate = client.finalizeGuestListDate;
+  this.selectBridesmaidDate = client.selectBridesmaidDate;
+  this.chooseVenueDate = client.chooseVenueDate;
+  this.weddingRegistryDate = client.weddingRegistryDate;
+  this.weddingDressDate = client.weddingDressDate;
+  this.preweddingEventsDate = client.preweddingEventsDate;
+  this.sendWeddingInvitationsDate = client.sendWeddingInvitationsDate;
+  this.bookingSalonsDate = client.bookingSalonsDate;
+  this.buyJewelerriesDate = client.buyJewelerriesDate;
+  this.makeOrdersForWeddingCakesDate = client.makeOrdersForWeddingCakesDate;
+  this.honeyMoonDate = client.honeyMoonDate;
+  this.finalizeFoodMenuDate = client.finalizeFoodMenuDate;
+
+  this.setaPartyBudgetDate = client.setaPartyBudgetDate;
+  this.finalizeTheGuestListDate = client.finalizeTheGuestListDate;
+  this.birthdayCakeOrdersDate = client.birthdayCakeOrdersDate;
+  this.setPartyInvitationsDate = client.setPartyInvitationsDate;
+  this.chooseAndBookTheVenueDate = client.chooseAndBookTheVenueDate;
+  this.buyBirthdayGiftsDate = client.buyBirthdayGiftsDate;
+  this.finalizeBirthdayFoodMenuDate = client.finalizeBirthdayFoodMenuDate;
 
   /* this.phone = client.phone;
   this.organization = client.organization;
@@ -38,13 +47,14 @@ Client.create = function (newCli, result) {
     }
   });
 };
-Client.findById = function (id, result) {
-  dbConn.query("Select * from clients where id = ? ", id, function (err, res) {
+Client.findById = function (googleId, result) {
+  dbConn.query("Select * from clients where googleId= ? ", [googleId], function (err, res) {
     if (err) {
       console.log("error: ", err);
       result(err, null);
     }
     else {
+      console.log('client clientjs: ', res);
       result(null, res);
     }
   });
@@ -61,14 +71,18 @@ Client.findAll = function (result) {
     }
   });
 };
-Client.update = function (id, client, result) {
-  dbConn.query(" UPDATE clients SET name=?, email=? , setWeddingBudget=?  ,finalizeGuestList=?, selectBridesmaid=? ,chooseVenue=?, " +
-                " weddingRegistry=? ,weddingDress=?, preweddingEvents=? ,sendWeddingInvitations=?, bookingSalons=? ,buyJewelerries=?, "+
-                " makeOrdersForWeddingCakes=? ,honeyMoon=?, finalizeFoodMenu=?  WHERE id = ? ",
-    [ client.name, client.email, client.setWeddingBudget, client.finalizeGuestList, client.selectBridesmaid, client.chooseVenue, 
-      client.weddingRegistry , client.weddingDress, client.weddingDress,  client.preweddingEvents, client.sendWeddingInvitations,
-      client.bookingSalons,  client.buyJewelerries,   client.makeOrdersForWeddingCakes,   client.honeyMoon,  client.finalizeFoodMenu,
-       id], function (err, res) {
+Client.update = function (googleId, client, result) {
+  console.log(client);
+  dbConn.query(" UPDATE clients SET name=?, email=? , setWeddingBudgetDate=?  ,finalizeGuestListDate=?, selectBridesmaidDate=? ,chooseVenueDate=?, " +
+                " weddingRegistryDate=? ,weddingDressDate=?, preweddingEventsDate=? ,sendWeddingInvitationsDate=?, bookingSalonsDate=? ,buyJewelerriesDate=?, "+
+                " makeOrdersForWeddingCakesDate=? ,honeyMoonDate=?, finalizeFoodMenuDate=?, setaPartyBudgetDate=?, finalizeTheGuestListDate=? ,birthdayCakeOrdersDate=?, "+
+                " setPartyInvitationsDate=? ,chooseAndBookTheVenueDate=?, buyBirthdayGiftsDate=?, finalizeBirthdayFoodMenuDate=? WHERE googleId = ? ",
+    [ client.name, client.email, 
+      client.setWeddingBudgetDate, client.finalizeGuestListDate, client.selectBridesmaidDate, client.chooseVenueDate, 
+      client.weddingRegistryDate , client.weddingDressDate, client.preweddingEventsDate, client.sendWeddingInvitationsDate,
+      client.bookingSalonsDate,  client.buyJewelerriesDate,   client.makeOrdersForWeddingCakesDate,   client.honeyMoonDate,  client.finalizeFoodMenuDate,
+      client.setaPartyBudgetDate, client.finalizeTheGuestListDate, client.birthdayCakeOrdersDate, client.setPartyInvitationsDate, 
+      client.chooseAndBookTheVenueDate , client.buyBirthdayGiftsDate, client.finalizeBirthdayFoodMenuDate, googleId ], function (err, res) {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -78,8 +92,8 @@ Client.update = function (id, client, result) {
   });
 };
 
-Client.delete = function (id, result) {
-  dbConn.query("DELETE FROM clients WHERE id = ?", [id], function (err, res) {
+Client.delete = function (googleId, result) {
+  dbConn.query("DELETE FROM clients WHERE googleId = ?", [googleId], function (err, res) {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -89,4 +103,5 @@ Client.delete = function (id, result) {
     }
   });
 };
+
 module.exports = Client;

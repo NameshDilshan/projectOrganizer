@@ -61,7 +61,7 @@
         </header>
 
         <!-- Portfolio Grid-->
-        <section class="page-section bg-light" id="portfolio">
+        <section class="page-section bg-light" id="portfolio" id="WeddingChooseDiv">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Your Event</h2>
@@ -82,7 +82,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
+                    <div class="col-lg-4 col-sm-6 mb-4" id="BirthdayPartyChooseDiv">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-toggle="modal" href="#birthdayModal">
                                 <div class="portfolio-hover">
@@ -96,7 +96,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
+                    <div class="col-lg-4 col-sm-6 mb-4" id="officePartyChooseDiv">  
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
                                 <div class="portfolio-hover">
@@ -105,16 +105,31 @@
                                 <img class="img-fluid" src="assets/img/portfolio/03-thumbnail.jpg" alt="" />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Finish</div>
+                                <div class="portfolio-caption-heading">Office Party</div>
                                 <div class="portfolio-caption-subheading text-muted">Identity</div>
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </section>
         <!-- Portfolio Modals-->
+        
+    <section class="page-section" >
+            <div class="container" >
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Our Service Providers</h2>
+                    <h3 class="section-subheading text-muted">
+                        Our Service Providers Manage your time and the attention for the successful plan.
+                    </h3>
+                </div>
+                <div class="row text-center" id="serviceProvidersListDiv">
+                    
+                </div>
+            </div>
+        </section>
+
+    <form id="weddingTaskForm" name="weddingTask">
         <!-- Wedding Modal -->
         <div class="portfolio-modal modal fade" id="weddingModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
@@ -123,7 +138,9 @@
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
-                            <form id="weddingTaskForm" name="weddingTask">
+                                <input type="hidden" value = '{{googleId}}'  id = "googleId" name = "googleId"/>
+                                <input type="hidden" value ='{{username}}' id="username" name = "name"/>
+                                <input type="hidden" value ='{{email}}' id="email" name = "email"/>
                                 <div class="modal-body">
                                     <!-- Project Details Go Here-->
                                     <h2 class="text-uppercase">Wedding</h2>
@@ -138,9 +155,9 @@
                                         <div class="col-4">
                                             <label class="container">
                                                 <div class = "row">
-                                                    <div class="col-md-6" >
-                                                        <input type="checkbox" class="checkmark" name="setWeddingBudget">
-                                                    </div>
+                                                    {{! <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="setWeddingBudget" value="true">
+                                                    </div> }}
                                                     <div class="col-md-6" >
                                                         <input class="datepicker" type="text" name="setWeddingBudgetDate" >
                                                     </div>
@@ -154,9 +171,9 @@
                                         <div class="col-4">
                                             <label class="container">
                                                 <div class = "row">
-                                                    <div class="col-md-6" >
-                                                        <input type="checkbox" class="checkmark" name="finalizeGuestList">
-                                                    </div>
+                                                    {{! <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="finalizeGuestList" value="true">
+                                                    </div> }}
                                                     <div class="col-md-6" >
                                                         <input class="datepicker" type="text" name="finalizeGuestListDate" >
                                                     </div>
@@ -169,9 +186,9 @@
                                         <div class="col-4">
                                             <label class="container">
                                                 <div class = "row">
-                                                    <div class="col-md-6" >
-                                                        <input type="checkbox" class="checkmark" name="selectBridesmaid">
-                                                    </div>
+                                                    {{! <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="selectBridesmaid" value="true">
+                                                    </div> }}
                                                     <div class="col-md-6" >
                                                         <input class="datepicker" type="text" name="selectBridesmaidDate" >
                                                     </div>
@@ -184,9 +201,9 @@
                                         <div class="col-4">
                                             <label class="container">
                                                 <div class = "row">
-                                                    <div class="col-md-6" >
-                                                        <input type="checkbox" class="checkmark" name="chooseVenue">
-                                                    </div>
+                                                    {{! <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="chooseVenue" value="true">
+                                                    </div> }}
                                                     <div class="col-md-6" >
                                                         <input class="datepicker" type="text" name="chooseVenueDate" >
                                                     </div>
@@ -199,9 +216,9 @@
                                         <div class="col-4">
                                             <label class="container">
                                                 <div class = "row">
-                                                    <div class="col-md-6" >
-                                                        <input type="checkbox" class="checkmark" name="weddingRegistry">
-                                                    </div>
+                                                    {{! <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="weddingRegistry" value="true">
+                                                    </div> }}
                                                     <div class="col-md-6" >
                                                         <input class="datepicker" type="text" name="weddingRegistryDate" >
                                                     </div>
@@ -214,9 +231,9 @@
                                         <div class="col-4">
                                             <label class="container">
                                                 <div class = "row">
-                                                    <div class="col-md-6" >
-                                                        <input type="checkbox" class="checkmark" name="weddingDress">
-                                                    </div>
+                                                    {{! <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="weddingDress" value="true">
+                                                    </div> }}
                                                     <div class="col-md-6" >
                                                         <input class="datepicker" type="text" name="weddingDressDate" >
                                                     </div>
@@ -229,9 +246,9 @@
                                         <div class="col-4">
                                             <label class="container">
                                                 <div class = "row">
-                                                    <div class="col-md-6" >
-                                                        <input type="checkbox" class="checkmark" name="preweddingEvents">
-                                                    </div>
+                                                   {{!  <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="preweddingEvents" value="true">
+                                                    </div> }}
                                                     <div class="col-md-6" >
                                                         <input class="datepicker" type="text" name="preweddingEventsDate" >
                                                     </div>
@@ -244,9 +261,9 @@
                                         <div class="col-4">
                                             <label class="container">
                                                 <div class = "row">
-                                                    <div class="col-md-6" >
-                                                        <input type="checkbox" class="checkmark" name="sendWeddingInvitations">
-                                                    </div>
+                                                    {{! <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="sendWeddingInvitations" value="true">
+                                                    </div> }}
                                                     <div class="col-md-6" >
                                                         <input class="datepicker" type="text" name="sendWeddingInvitationsDate" >
                                                     </div>
@@ -259,9 +276,9 @@
                                         <div class="col-4">
                                             <label class="container">
                                                 <div class = "row">
-                                                    <div class="col-md-6" >
-                                                        <input type="checkbox" class="checkmark" name="bookingSalons">
-                                                    </div>
+                                                    {{! <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="bookingSalons" value="true">
+                                                    </div> }}
                                                     <div class="col-md-6" >
                                                         <input class="datepicker" type="text" name="bookingSalonsDate" >
                                                     </div>
@@ -274,9 +291,9 @@
                                         <div class="col-4">
                                             <label class="container">
                                                 <div class = "row">
-                                                    <div class="col-md-6" >
-                                                        <input type="checkbox" class="checkmark" name="buyJewelerries">
-                                                    </div>
+                                                    {{! <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="buyJewelerries" value="true">
+                                                    </div> }}
                                                     <div class="col-md-6" >
                                                         <input class="datepicker" type="text" name="buyJewelerriesDate" >
                                                     </div>
@@ -289,9 +306,9 @@
                                         <div class="col-4">
                                             <label class="container">
                                                 <div class = "row">
-                                                    <div class="col-md-6" >
-                                                        <input type="checkbox" class="checkmark" name="makeOrdersForWeddingCakes">
-                                                    </div>
+                                                    {{! <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="makeOrdersForWeddingCakes" value="true">
+                                                    </div> }}
                                                     <div class="col-md-6" >
                                                         <input class="datepicker" type="text" name="makeOrdersForWeddingCakesDate" >
                                                     </div>
@@ -304,9 +321,9 @@
                                         <div class="col-4">
                                             <label class="container">
                                                 <div class = "row">
-                                                    <div class="col-md-6" >
-                                                        <input type="checkbox" class="checkmark" name="honeyMoon">
-                                                    </div>
+                                                   {{!  <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="honeyMoon" value="true">
+                                                    </div> }}
                                                     <div class="col-md-6" >
                                                         <input class="datepicker" type="text" name="honeyMoonDate" >
                                                     </div>
@@ -319,9 +336,9 @@
                                         <div class="col-4">
                                             <label class="container">
                                                 <div class = "row">
-                                                    <div class="col-md-6" >
-                                                        <input type="checkbox" class="checkmark" name="finalizeFoodMenu">
-                                                    </div>
+                                                    {{! <div class="col-md-6" >
+                                                        <input type="checkbox" class="checkmark" name="finalizeFoodMenu" value="true">
+                                                    </div> }}
                                                     <div class="col-md-6" >
                                                         <input class="datepicker" type="text" name="finalizeFoodMenuDate" >
                                                     </div>
@@ -330,7 +347,7 @@
                                         </div>
                                     </div><br/>
                                     <br/><br/>
-                                    <button class="btn btn-primary"  type="submit" id="weddingdetailssubmitbtn" data-dismiss="modal">
+                                    <button class="btn btn-primary"  id="Weddingdetailssubmitbtn" type="button" >
                                         Let's see Wedding Timeline !!
                                     </button>
                                 </div>
@@ -361,63 +378,63 @@
                                     <div class="row">
                                         <div class="col-8">Set a Party Budget</div>
                                         <div class="col-4">
-                                            <label class="container">
-                                                <input type="checkbox" class="checkmark">
-                                            </label>
+                                            <div class="col-md-6" >
+                                                <input class="datepicker" type="text" name="setaPartyBudgetDate" >
+                                            </div>
                                         </div>
                                     </div>
                                     <br/>
                                     <div class="row">
                                         <div class="col-8">Finalize the guest list</div>
                                         <div class="col-4">
-                                            <label class="container">
-                                                <input type="checkbox" class="checkmark">
-                                            </label>
+                                            <div class="col-md-6" >
+                                                <input class="datepicker" type="text" name="finalizeTheGuestListDate" >
+                                            </div>
                                         </div>
                                     </div><br/>
                                     <div class="row">
                                         <div class="col-8">Make orders for Birthday cake & invitations</div>
                                         <div class="col-4">
-                                            <label class="container">
-                                                <input type="checkbox" class="checkmark">
-                                            </label>
+                                            <div class="col-md-6" >
+                                                <input class="datepicker" type="text" name="birthdayCakeOrdersDate" >
+                                            </div>
                                         </div>
                                     </div><br/>
                                     <div class="row">
                                         <div class="col-8">send party invitations</div>
                                         <div class="col-4">
-                                            <label class="container">
-                                                <input type="checkbox" class="checkmark">
-                                            </label>
+                                            <div class="col-md-6" >
+                                                <input class="datepicker" type="text" name="setPartyInvitationsDate" >
+                                            </div>
                                         </div>
                                     </div><br/>
                                     <div class="row">
                                         <div class="col-8">Choose & Book the venue</div>
                                         <div class="col-4">
-                                            <label class="container">
-                                                <input type="checkbox" class="checkmark">
-                                            </label>
+                                            <div class="col-md-6" >
+                                                <input class="datepicker" type="text" name="chooseAndBookTheVenueDate" >
+                                            </div>
                                         </div>
                                     </div><br/>
                                     <div class="row">
-                                        <div class="col-8">Fonalize the food menu</div>
+                                        <div class="col-8">Finalize the food menu</div>
                                         <div class="col-4">
-                                            <label class="container">
-                                                <input type="checkbox" class="checkmark">
-                                            </label>
+                                            <div class="col-md-6" >
+                                                <input class="datepicker" type="text" name="finalizeBirthdayFoodMenuDate" >
+                                            </div>
                                         </div>
                                     </div><br/>
                                     <div class="row">
                                         <div class="col-8">Buy a birthday gifts</div>
                                         <div class="col-4">
-                                            <label class="container">
-                                                <input type="checkbox" class="checkmark">
-                                            </label>
+                                            <div class="col-md-6" >
+                                                <input class="datepicker" type="text" name="buyBirthdayGiftsDate" >
+                                            </div>
                                         </div>
                                     </div><br/>
                                     <br/><br/>
-                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                        Let's set Dates to My Birthday Party !!
+                                    <button class="btn btn-primary" id="Birthdaydetailssubmitbtn"  >
+                                        Let's see Birthday Party Timeline !!
                                     </button>
                                 </div>
                             </div>
@@ -426,6 +443,7 @@
                 </div>
             </div>
         </div>
+</form>
         <!-- Modal 1-->
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
@@ -575,61 +593,148 @@
                     <h3 class="section-subheading text-muted">Your Event Plan Timeline.</h3>
                 </div>
                 <ul class="timeline">
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 id="setWeddingBudgetDate">2009-2011</h4>
+                                <h4 class="subheading">Set a Wedding Budget</h4>
+                            </div>
+                            {{! <div class="timeline-body"><p class="text-muted">Lorem ipsum  recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div> }}
+                        </div>
+                    </li>
                     <li>
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="" /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>2009-2011</h4>
-                                <h4 class="subheading">Our Humble Beginnings</h4>
+                                <h4 id="finalizeGuestListDate">2009-2011</h4>
+                                <h4 class="subheading">Finalize Guest List</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                            {{! <div class="timeline-body"><p class="text-muted">Lorem ipsum  recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div> }}
                         </div>
                     </li>
+                    
                     <li class="timeline-inverted">
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2.jpg" alt="" /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>March 2011</h4>
-                                <h4 class="subheading">An Agency is Born</h4>
+                                <h4 id="selectBridesmaidDate">March 2011</h4>
+                                <h4 class="subheading">Select Bridesmaid, Groomsman, Groomsladies or bridesman</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                            {{! <div class="timeline-body"><p class="text-muted">Lorem ipsumo unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div> }}
                         </div>
                     </li>
                     <li>
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.jpg" alt="" /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>December 2012</h4>
-                                <h4 class="subheading">Transition to Full Service</h4>
+                                <h4 id="chooseVenueDate">December 2012</h4>
+                                <h4 class="subheading">Choose & book the venue</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                            {{! <div class="timeline-body"><p class="text-muted">Lorem ipiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div> }}
                         </div>
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="" /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>July 2014</h4>
-                                <h4 class="subheading">Phase Two Expansion</h4>
+                                <h4 id="weddingRegistryDate">July 2014</h4>
+                                <h4 class="subheading">Wedding registry</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                            {{! <div class="timeline-body"><p class="text-muted">Lorem ipsum dolorudantium consectetur!</p></div> }}
+                        </div>
+                    </li>
+                    <li >
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 id="weddingDressDate">July 2014</h4>
+                                <h4 class="subheading">Purchase wedding dress & other attire (both bride & groom)</h4>
+                            </div>
+                            {{! <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adi et ea quo dolore laudantium consectetur!</p></div> }}
+                        </div>
+                    </li><li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 id="preweddingEventsDate">July 2014</h4>
+                                <h4 class="subheading">Organize pre-wedding events(Bridal Shower/ Bachelor & Bachelorette party )</h4>
+                            </div>
+                            {{! <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet ea quo dolore laudantium consectetur!</p></div> }}
+                        </div>
+                    </li><li>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 id="sendWeddingInvitationsDate">July 2014</h4>
+                                <h4 class="subheading">Send wedding invitations</h4>
+                            </div>
+                            {{! <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sitntium consectetur!</p></div> }}
+                        </div>
+                    </li><li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 id="bookingSalonsDate">July 2014</h4>
+                                <h4 class="subheading">Booking salons</h4>
+                            </div>
+                            {{! <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipnde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div> }}
+                        </div>
+                    </li><li >
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 id="buyJewelerriesDate">July 2014</h4>
+                                <h4 class="subheading">Buy Jewelerries</h4>
+                            </div>
+                            {{! <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicinde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div> }}
+                        </div>
+                    </li><li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 id="makeOrdersForWeddingCakesDate">July 2014</h4>
+                                <h4 class="subheading">Make orders for Wedding cakes, boxes and Cards</h4>
+                            </div>
+                           {{!  <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, conseo unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div> }}
+                        </div>
+                    </li>
+                    </li><li >
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 id="honeyMoonDate">July 2014</h4>
+                                <h4 class="subheading">Honeymoon</h4>
+                            </div>
+                            {{! <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, csandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div> }}
+                        </div>
+                    </li>
+                    </li><li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 id="finalizeFoodMenuDate">July 2014</h4>
+                                <h4 class="subheading">Finalize the food menu</h4>
+                            </div>
+                            {{! <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit ametit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div> }}
                         </div>
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image">
                             <h3><br/>
-                                Final
+                                The
                                 <br />
-                                Event!
+                                Wedding!
                             </h3>
                         </div>
                     </li>
                 </ul>
             </div>
         </section>
-        
         <!-- Footer-->
         {{>footer}}
         {{>imports}}
+        <!-- Core theme JS-->
+        <script src="js/clientPagescripts.js"></script>
     </body>
 </html>

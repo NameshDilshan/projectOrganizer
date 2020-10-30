@@ -11,11 +11,19 @@
                 {{! <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li> }}
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a></li>
                 {{#username}}
-                   <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/client"> {{username}}</a></li>
+                   <li class="nav-item"><a class="nav-link js-scroll-trigger" href='/client'> {{username}}</a></li>
                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/logout">Logout</a></li>
-                {{/username}}  
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/admin">Admin Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link " data-toggle="modal" href="#darkModalForm">Login</a></li>
+                {{/username}}
+
+                {{#admin}}
+                   <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/admin">Admin Dashboard</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/logout">Logout</a></li>
+                {{/admin}}
+  
+                <li id="adminLoginNavbar" class="nav-item"><a class="nav-link " data-toggle="modal" href="#darkModalForm">Login</a></li>
+                <input type="hidden" value="{{username}}" id="usernamevalue" />
+                <input type="hidden" value="{{admin}}" id="adminTrueFalse" />
+                
             </ul>
         </div>
     </div>
@@ -36,27 +44,27 @@
         </div>
         <!--Body-->
         <div class="modal-body">
+          <form action="/login" method="POST">
             <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="emailaddon">Email</span>
-            </div>
-            <input type="email" class="form-control"  aria-label="Email" aria-describedby="emailaddon">
+              <div class="input-group-prepend">
+                  <span class="input-group-text" id="emailaddon">Email</span>
+              </div>
+              <input type="email" name="email" class="form-control"  aria-label="Email" aria-describedby="emailaddon">
             </div>
             <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="passwordaddon">Password</span>
+              <div class="input-group-prepend">
+                  <span class="input-group-text" id="passwordaddon">Password</span>
+              </div>
+              <input type="password" name="password" class="form-control"  aria-label="Email" aria-describedby="passwordaddon">
             </div>
-            <input type="password" class="form-control"  aria-label="Email" aria-describedby="passwordaddon">
+            <!--Grid row-->
+            <div class="row d-flex align-items-center mb-4">
+              <div class="text-center mb-3 col-md-12">
+                <button type="submit" class="btn btn-primary btn-block btn-rounded z-depth-1">Login</button>
+              </div>
             </div>
-          <!--Grid row-->
-          <div class="row d-flex align-items-center mb-4">
-            <!--Grid column-->
-            <div class="text-center mb-3 col-md-12">
-              <button type="button" class="btn btn-primary btn-block btn-rounded z-depth-1">Login</button>
-            </div>
-            <!--Grid column-->
-          </div>
-          <!--Grid row-->
+            <!--Grid row-->
+          </form>
         </div>
       </div>
     </div>

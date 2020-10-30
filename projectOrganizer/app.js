@@ -3,7 +3,11 @@ const vertex = require('vertex360')({ site_id: process.env.TURBO_APP_ID })
 const express = require('express')
 const passport = require('passport');
 const cookieSession = require('cookie-session')
+var schedule = require('node-schedule');
+const Client = require('./src/models/client');
+const dateFormat = require('dateformat');
 require('./passport-setup');
+
 
 const app = express() // initialize app
 
@@ -55,18 +59,34 @@ app.get('/good', (req, res) => {
   var email = req.user.emails[0].value;
   var id = req.user.id;
   var context = {
-    "id" : id,
+    "googleId" : id,
     "email" : email,
     "username" : username
   }; 
    req.body = {
+    'googleId' : id,
     'email' : email,
     'name' : username
   }; 
-  clientController.create(req, res); 
+  clientController.findOrCreate(req, res);
   req.session.context = context;
   res.redirect('/');
 });
+
+
+app.post('/login', (req, res) => {
+  if(req.body.email == process.env.adminEmailAddress && req.body.password == process.env.adminEmailPassword){
+    var data = {
+      'admin' : true
+    }
+    req.session.context = data;
+    res.redirect('/admin');
+  }else{
+
+  }
+});
+
+
 app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 app.get('/google/callback', passport.authenticate(
   'google', 
@@ -75,18 +95,67 @@ app.get('/google/callback', passport.authenticate(
     // Successful authentication, redirect home.
     res.redirect('/good');
   });
-
 app.get('/logout', (req, res) => {
   req.session = null,
   req.logOut();
   res.redirect('/');
 
 });
-
 app.post('/adminContactSendMail', mailsender);
-
+app.get('/test', mailsender);
 app.use('/clientApi', clientRoutes);    // access like     -> localhost:5000://clientapi/clients
 app.use('/serviceProviderApi', serviceProviderRoutes);  // access like     -> localhost:5000://serviceProviderApi/clients
 
+
+
+schedule.scheduleJob("0 0 * * * ", function(){     // 00 00 * * * *  cornjob min and hours  -->  https://crontab.guru/
+  var now = new Date();
+  now = dateFormat(now, "dd-mmm-yyyy");
+    Client.findAll(function (err, client) {
+        if (err){
+            res.send(err);
+        }else{
+           for(i in client){
+            if(client.hasOwnProperty(i)){
+              var element = JSON.stringify(client[i]);
+              element = JSON.parse(element);
+              var name = element['name'];
+              var email = element['email'];
+                  console.log(name);
+              var taskArray = ["setWeddingBudgetDate",
+                  "finalizeGuestListDate",
+                  "selectBridesmaidDate",
+                  "chooseVenueDate",
+                  "weddingRegistryDate",
+                  "weddingDressDate",
+                  "preweddingEventsDate",
+                  "sendWeddingInvitationsDate",
+                  "bookingSalonsDate",
+                  "buyJewelerriesDate",
+                  "makeOrdersForWeddingCakesDate",
+                  "honeyMoonDate",
+                  "finalizeFoodMenuDate",
+                  "setaPartyBudgetDate",
+                  "finalizeTheGuestListDate",
+                  "birthdayCakeOrdersDate",
+                  "setPartyInvitationsDate",
+                  "chooseAndBookTheVenueDate",
+                  "buyBirthdayGiftsDate",
+                  "finalizeBirthdayFoodMenuDate"];
+              taskArray.forEach(function(item, index){
+                if(element[''+item+''] == now){
+                  console.log("mail sent to client "+ item+" " + name);
+                  mailsender.sendTaskEmailToClient(item, name, email);
+                }
+              });
+            }
+          } 
+        } 
+    });
+});
+
+/* console.log('The answer to life, the universe, and everything!');
+var all = clientController.findAll();
+console.log(all); */
 
 module.exports = app

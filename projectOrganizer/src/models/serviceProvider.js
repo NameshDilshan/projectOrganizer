@@ -1,7 +1,7 @@
 'use strict';
 var dbConn = require('./../../config/dbConfig');
 //Client object create
-var ServiceProviders = function (client) {
+var ServiceProviders = function (serviceprovider) {
   this.companyName = serviceprovider.companyName;
   this.tel = serviceprovider.tel;
   this.email = serviceprovider.email;

@@ -1,13 +1,17 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const clientController = require('./src/controllers/clientController');
+const client  = require('./src/models/client');
 
 passport.serializeUser(function(user, done) {
+  console.log("ser");
     done(null, user);
   });
   
   passport.deserializeUser(function(user, done) {
-    //User.findById(id, function(err, user) {
-        done(null, user);
+    //Client.findById(user.id, function(err, user) {
+      console.log("deser");  
+      done(null, user);
     //});
   });
 
@@ -17,11 +21,17 @@ passport.use(new GoogleStrategy({
     callbackURL: "http://localhost:3000/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-      // use the profile info (mainly profile id) to check if the user is registed in ur db
-    //User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      console.log(profile.id);
+    /*
+     use the profile info (mainly profile id) to check if the user is registerd in ur db
+     If yes select the user and pass him to the done callback
+     If not create the user and then select him and pass to callback
+    */
+    // use the profile info (mainly profile id) to check if the user is registed in ur db
+    // clientController.findOrCreate({ googleId: profile.id }, function (err, user) {
+      console.log("profile.id : " + profile.id);
       console.log(profile.displayName);
+    //  user = req.json;
       return done(null, profile);
-    //});
+    //}); 
   }
 ));
