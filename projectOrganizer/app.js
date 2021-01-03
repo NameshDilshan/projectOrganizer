@@ -8,8 +8,7 @@ const Client = require('./src/models/client');
 const dateFormat = require('dateformat');
 require('./passport-setup');
 
-
-const app = express() // initialize app
+const app = express(); // initialize app
 
 /*  Apps are configured with settings as shown in the conig object below.
     Options include setting views directory, static assets directory,
@@ -50,10 +49,13 @@ const mailsender = require('./src/routes/mailSender');
 const clientRoutes = require('./src/routes/clientRoutes');
 const serviceProviderRoutes = require('./src/routes/serviceProviderRoutes');
 const clientController = require('./src/controllers/clientController');
+const { default: Swal } = require('sweetalert2');
 // set routes
 app.use('/', index);
 app.use('/api', api) // sample API Routes
-app.get('/failed', (req, res) => res.send("Failed to Log in"));
+app.get('/failed', function(req, res) {
+  return res.redirect('/');
+});
 app.get('/good', (req, res) => {
   var username = req.user.displayName;
   var email = req.user.emails[0].value;
@@ -73,19 +75,19 @@ app.get('/good', (req, res) => {
   res.redirect('/');
 });
 
-
 app.post('/login', (req, res) => {
-  if(req.body.email == process.env.adminEmailAddress && req.body.password == process.env.adminEmailPassword){
+  if(req.body.email == process.env.adminEmailAddress && req.body.password === process.env.adminEmailPassword){
     var data = {
       'admin' : true
     }
     req.session.context = data;
+    res.json('success');
     res.redirect('/admin');
   }else{
-
+    res.body = 'failed';
+    res.json('failed');
   }
 });
-
 
 app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 app.get('/google/callback', passport.authenticate(
@@ -153,9 +155,5 @@ schedule.scheduleJob("0 0 * * * ", function(){     // 00 00 * * * *  cornjob min
         } 
     });
 });
-
-/* console.log('The answer to life, the universe, and everything!');
-var all = clientController.findAll();
-console.log(all); */
 
 module.exports = app

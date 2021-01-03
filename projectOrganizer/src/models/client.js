@@ -28,6 +28,16 @@ var Client = function (client) {
   this.buyBirthdayGiftsDate = client.buyBirthdayGiftsDate;
   this.finalizeBirthdayFoodMenuDate = client.finalizeBirthdayFoodMenuDate;
 
+  this.setOfficePartyBudgetDate = client.setOfficePartyBudgetDate;
+  this.finalizeOfficePartyGuestListDate = client.finalizeOfficePartyGuestListDate;
+  this.officePartyCakeOrdersDate = client.officePartyOrdersDate;
+  this.setOfficePartyInvitationsDate = client.setOfficePartyInvitationsDate;
+  this.officeBookTheVenueDate = client.officeBookTheVenueDate;
+  this.finalizeOfficeFoodMenuDate = client.finalizeOfficeFoodMenuDate;
+  this.buyOfficeGiftsDate = client.buyOfficeGiftsDate;
+  this.officePartyDecorations = client.officePartyDecorations;
+
+
   /* this.phone = client.phone;
   this.organization = client.organization;
   this.designation = client.designation;
@@ -76,13 +86,17 @@ Client.update = function (googleId, client, result) {
   dbConn.query(" UPDATE clients SET name=?, email=? , setWeddingBudgetDate=?  ,finalizeGuestListDate=?, selectBridesmaidDate=? ,chooseVenueDate=?, " +
                 " weddingRegistryDate=? ,weddingDressDate=?, preweddingEventsDate=? ,sendWeddingInvitationsDate=?, bookingSalonsDate=? ,buyJewelerriesDate=?, "+
                 " makeOrdersForWeddingCakesDate=? ,honeyMoonDate=?, finalizeFoodMenuDate=?, setaPartyBudgetDate=?, finalizeTheGuestListDate=? ,birthdayCakeOrdersDate=?, "+
-                " setPartyInvitationsDate=? ,chooseAndBookTheVenueDate=?, buyBirthdayGiftsDate=?, finalizeBirthdayFoodMenuDate=? WHERE googleId = ? ",
+                " setPartyInvitationsDate=? ,chooseAndBookTheVenueDate=?, buyBirthdayGiftsDate=?, finalizeBirthdayFoodMenuDate=? ," +
+                " setOfficePartyBudgetDate=? , finalizeOfficePartyGuestListDate=? ,  officePartyCakeOrdersDate=? , setOfficePartyInvitationsDate=? , " +  
+                " officeBookTheVenueDate=? ,finalizeOfficeFoodMenuDate=? ,buyOfficeGiftsDate=? , officePartyDecorations=? WHERE googleId = ? ",
     [ client.name, client.email, 
       client.setWeddingBudgetDate, client.finalizeGuestListDate, client.selectBridesmaidDate, client.chooseVenueDate, 
       client.weddingRegistryDate , client.weddingDressDate, client.preweddingEventsDate, client.sendWeddingInvitationsDate,
       client.bookingSalonsDate,  client.buyJewelerriesDate,   client.makeOrdersForWeddingCakesDate,   client.honeyMoonDate,  client.finalizeFoodMenuDate,
       client.setaPartyBudgetDate, client.finalizeTheGuestListDate, client.birthdayCakeOrdersDate, client.setPartyInvitationsDate, 
-      client.chooseAndBookTheVenueDate , client.buyBirthdayGiftsDate, client.finalizeBirthdayFoodMenuDate, googleId ], function (err, res) {
+      client.chooseAndBookTheVenueDate , client.buyBirthdayGiftsDate, client.finalizeBirthdayFoodMenuDate,
+      client.setOfficePartyBudgetDate, client.finalizeOfficePartyGuestListDate,  client.officePartyCakeOrdersDate, client.setOfficePartyInvitationsDate, client.officeBookTheVenueDate,
+      client.finalizeOfficeFoodMenuDate,  client.buyOfficeGiftsDate, client.officePartyDecorations, googleId ], function (err, res) {
     if (err) {
       console.log("error: ", err);
       result(null, err);

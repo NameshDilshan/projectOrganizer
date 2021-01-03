@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="/"><img src="assets/img/navbar-logo.svg" alt="" /></a>
+        <a class="navbar-brand js-scroll-trigger" href="/"><i class="fas fa-tasks"></i></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars ml-1"></i>
@@ -44,27 +44,28 @@
         </div>
         <!--Body-->
         <div class="modal-body">
-          <form action="/login" method="POST">
+          <form id="adminLoginForm" action="/login" method="POST">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                   <span class="input-group-text" id="emailaddon">Email</span>
               </div>
-              <input type="email" name="email" class="form-control"  aria-label="Email" aria-describedby="emailaddon">
+              <input id="adminEmail" type="email" name="email" class="form-control"  aria-label="Email" aria-describedby="emailaddon" required>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                   <span class="input-group-text" id="passwordaddon">Password</span>
               </div>
-              <input type="password" name="password" class="form-control"  aria-label="Email" aria-describedby="passwordaddon">
+              <input id="adminPassword" type="password" name="password" class="form-control"  aria-label="Email" aria-describedby="passwordaddon" required>
             </div>
             <!--Grid row-->
             <div class="row d-flex align-items-center mb-4">
               <div class="text-center mb-3 col-md-12">
-                <button type="submit" class="btn btn-primary btn-block btn-rounded z-depth-1">Login</button>
+                <button id="adminloginSubmitbtn" type="submit" class="btn btn-primary btn-block btn-rounded z-depth-1">Login</button>
               </div>
             </div>
             <!--Grid row-->
           </form>
+          
         </div>
       </div>
     </div>

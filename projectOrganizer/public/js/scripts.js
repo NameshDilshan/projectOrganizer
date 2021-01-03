@@ -63,9 +63,6 @@ $(document).ready(function (){
     if(adminval == "true" || usernameval > 0){
         $('#adminLoginNavbar').hide();
     }
-
-
-
 });
 
  /* $('#contactForm').submit(function(e){
@@ -100,6 +97,53 @@ $(document).ready(function (){
 	});
  }); */
 
-
-
- 
+$('#adminloginSubmitbtn').click(function (event) {
+    event.preventDefault(); // prevent default submit behaviour
+        $this = $("#adminloginSubmitbtn");
+        $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
+        
+        $.ajax({
+            url: "login",
+            type: "POST",
+            data: {
+              "email" : $('#adminEmail').val(),
+              "password" : $('#adminPassword').val()
+            },
+            success: function (result) {
+              console.log(result)
+              if(result == 'success'){
+                window.location.href="/admin";
+              }
+              if(result == 'failed'){
+                // Failed message
+                Swal.fire({
+                    title: "Please Try again!",
+                    text: "Username or Password Credentials are Wrong",
+                    icon: 'error',
+                    timer: 1700,
+                    showConfirmButton: false
+                }).then(function (){
+                   /*  window.location.href="/"; */
+                });
+               /*  $("#adminLoginForm").trigger("reset");
+                $("#darkModalForm").hide();
+                 */
+              }
+            },
+            error: function () {
+                // Fail message
+                Swal.fire(
+                    ' Sorry ',
+                    'It seems that my server is not responding. Please try again later!!',
+                    'error'
+                    );
+                //clear all fields
+                $("#adminLoginForm").trigger("reset");
+            },
+            complete: function () {
+                setTimeout(function () {
+                    $this.prop("disabled", false); // Re-enable submit button when AJAX call is complete
+                }, 1000);
+            },
+        }); 
+});
